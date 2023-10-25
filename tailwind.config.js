@@ -1,8 +1,12 @@
 /** @type {import('tailwindcss').Config} */
 module.exports = {
-  content: ["./src/**/*.{html,js}"],
+  content: ["./src/**/*.{js,jsx,tsx}", "./src/**/**/*.{js,jsx,tsx}"],
   theme: {
-    extend: {}
+    extend: {
+      fontFamily: {
+        default: ['Titillium Web', 'sans-serif']
+      }
+    }
   },
   variants: {},
 }

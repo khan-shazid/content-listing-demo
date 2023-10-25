@@ -1,0 +1,74 @@
+.header {
+  background: linear-gradient(180deg, rgb(23 23 23) 0%, rgb(0 0 0) 44%, rgba(23, 23, 23, 0) 100%);
+  @apply flex items-center justify-between mb-5 fixed left-0 right-0 top-0 p-4 pb-8;
+}
+
+/* Expandable search box */
+/* Note: don't change 0.8s in transition. */
+/* --------------------- */
+.searchText {
+  color: #fff;
+  position: relative;
+  z-index: 5;
+  transition: z-index 0.8s, width 0.5s, background 0.3s ease, border 0.3s;
+  height: 45px;
+  width: 0;
+  margin: 0;
+  margin-right: 20px;
+  padding: 5px 0 5px 40px;
+  box-sizing: border-box;
+  font-size: 16px;
+  font-size: 1rem;
+  cursor: pointer;
+  border-radius: 30px;
+  border: 1px solid transparent;
+  /* background: url('../../assets/icons/search.png') no-repeat left 9px center transparent; */
+  background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" width="58.147" height="58.158" viewBox="0 0 58.147 58.158"><path id="magnifying-glass-solid_1_" data-name="magnifying-glass-solid (1)" d="M47.246,23.623A23.565,23.565,0,0,1,42.7,37.559l14.378,14.39a3.638,3.638,0,1,1-5.145,5.145L37.559,42.7a23.627,23.627,0,1,1,9.688-19.08ZM23.623,39.978A16.355,16.355,0,1,0,7.269,23.623,16.355,16.355,0,0,0,23.623,39.978Z" fill="%23fff"/></svg>');
+  background-size: 20px;
+  background-repeat: no-repeat;
+  background-position: center;
+  font-size: 14px;
+}
+
+.searchText:focus {
+  z-index: 3;
+  width: 270px;
+  border: 1px solid #fff;
+  background-color: #171717;
+  background-position: 12px 12px;
+  outline: none;
+  cursor: auto;
+  padding-right: 10px;
+}
+
+/* .searchSubmit {
+    position: relative;
+    z-index: 4;
+    top: 17px;
+    left: 49px;
+    width: 45px;
+    height: 45px;
+    margin: 0;
+    padding: 0;
+    border: 0;
+    outline: 0;
+    border-radius: 30px;
+    cursor: pointer;
+    background: none;
+  } */
+
+.searchText::-webkit-search-cancel-button {
+  cursor: pointer;
+}
+
+.back {
+  @apply flex gap-3 cursor-pointer;
+}
+
+.nav-title {
+  @apply text-white font-default text-lg;
+}
+
+/* .searchText:focus~span[class="title"] {
+  display: hidden;
+} */
