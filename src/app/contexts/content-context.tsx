@@ -31,7 +31,7 @@ const ContentContext = createContext<ContentContext>({
 });
 
 function useContentController() {
-    const [loading, setLoading] = useState(false);
+    const [loading, setLoading] = useState<boolean>(false);
     const [pageTitle, setPageTitle] = useState<string>('');
     const [data, setData] = useState<Content[]>([]);
     const [pagination, setPagination] = useState<Pagination>(null);

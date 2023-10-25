@@ -1,6 +1,6 @@
-import { memo } from 'react';
+import { ReactNode, memo } from 'react';
 
-function ReleaseNotes() {
+function ReleaseNotes(): ReactNode {
     return (
         <div style={{ height: '100vh' }}>
             <nav className="flex items-center justify-between flex-wrap bg-blue-600  p-6">

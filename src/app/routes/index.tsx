@@ -1,4 +1,4 @@
-import { Suspense, lazy, useCallback } from 'react';
+import { ReactNode, Suspense, lazy, useCallback } from 'react';
 import { createBrowserRouter, RouterProvider } from 'react-router-dom';
 
 import { useContentContext } from '../contexts/content-context';
@@ -9,7 +9,7 @@ import RouteStyles from './index.module.css';
 import { FallbackComponent } from 'app/components/fallback-component/fallback-component';
 import ReleaseNotes from 'app/pages/release-notes';
 
-const SearchableContentRoute = () => {
+const SearchableContentRoute = (): ReactNode => {
     const { pageTitle, search, setSearch } = useContentContext();
 
     const handleSearchInput = useCallback(
@@ -41,6 +41,6 @@ const router = createBrowserRouter([
     },
 ]);
 
-export default function Routes() {
+export default function Routes(): ReactNode {
     return <RouterProvider router={router} />;
 }

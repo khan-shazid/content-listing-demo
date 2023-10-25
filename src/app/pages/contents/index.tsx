@@ -1,8 +1,8 @@
 import { useContentContext } from 'app/contexts/content-context';
 import { ContentListItem } from 'app/components/content-list-item/content-list-item';
-import { useEffect } from 'react';
+import { ReactNode, useEffect } from 'react';
 
-export default function ContentList() {
+export default function ContentList(): ReactNode {
     const { loading, contents, handleScroll } = useContentContext();
     useEffect(() => {
         window.addEventListener('scroll', handleScroll);

@@ -1,11 +1,11 @@
-import { memo } from 'react';
+import { ReactNode, memo } from 'react';
 
 import { Content } from 'app/types/content-type';
 import { IMAGE_URL, STATIC_IMAGES } from 'app/constants';
 import { LazyLoadImage, trackWindowScroll } from 'react-lazy-load-image-component';
 import 'react-lazy-load-image-component/src/effects/blur.css';
 
-const Item = ({ content, scrollPosition }: { content: Content; scrollPosition: () => void }) => {
+const Item = ({ content, scrollPosition }: { content: Content; scrollPosition: () => void }): ReactNode => {
     return (
         <div data-testid="content-item">
             <LazyLoadImage
