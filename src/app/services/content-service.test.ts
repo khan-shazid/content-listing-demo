@@ -39,7 +39,6 @@ afterEach(() => {
 
 describe('Content List Service Test', () => {
     it('Test 01 - Service is responding with properly formatted data', async () => {
-        console.log(BASE_URL + '/data/page1.json')
         mock.onGet(BASE_URL + '/data/page1.json').reply(200, response);
         const result = await fetchContent(1);
 
@@ -58,6 +57,5 @@ describe('Content List Service Test', () => {
                 total: '54',
             }
         })
-        console.log(result);
     });
 });
