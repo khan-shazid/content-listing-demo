@@ -2,31 +2,36 @@ import { createContext, useContext, useState, useEffect, useMemo, useDeferredVal
 import { Content } from 'app/types/content-type';
 import { Pagination } from 'app/types/pagination-type';
 import { fetchContent } from 'app/services/content-service';
+import { hasWindowScrolledHalf } from 'app/utils';
 
 type ContentContextProviderProps = {
     children: React.ReactNode;
 };
 
-type ContentContext = {
+export type ContentContext = {
+    loading: boolean;
     pageTitle: string;
     contents: Content[];
     pagination?: Pagination;
     search: string;
     setSearch: React.Dispatch<React.SetStateAction<string>>;
     handleFetchData: (page: number) => void;
+    handleScroll: () => void;
 };
 
 const ContentContext = createContext<ContentContext>({
+    loading: false,
     pageTitle: '',
     contents: [],
     pagination: null,
     search: '',
     setSearch: () => {},
     handleFetchData: () => {},
+    handleScroll: () => {},
 });
 
 function useContentController() {
-    // const [loading, setLoading] = useState(false);
+    const [loading, setLoading] = useState(false);
     const [pageTitle, setPageTitle] = useState<string>('');
     const [data, setData] = useState<Content[]>([]);
     const [pagination, setPagination] = useState<Pagination>(null);
@@ -43,17 +48,30 @@ function useContentController() {
 
     const handleFetchData = useCallback(
         async (page = 1) => {
+            setLoading(true);
             const result = await fetchContent(page);
+            setLoading(false);
             if (result.success) {
                 setPageTitle(result.title);
-                setData(result.contents);
+                if (page > 1) setData((prev) => [...prev, ...result.contents]);
+                else setData(result.contents);
                 setPagination(result.pagination);
             }
         },
         [setPageTitle, setData, setPagination],
     );
 
-    return { pageTitle, contents, pagination, search, setSearch, handleFetchData };
+    const handleScroll = useCallback(() => {
+        if (hasWindowScrolledHalf() && !loading) {
+            const { page, size, total } = pagination;
+            if (parseInt(page.toString()) * parseInt(size.toString()) < parseInt(total.toString())) {
+                const nextPage = parseInt(page.toString()) + 1;
+                handleFetchData(nextPage);
+            }
+        }
+    }, [loading, pagination]);
+
+    return { loading, pageTitle, contents, pagination, search, setSearch, handleFetchData, handleScroll };
 }
 
 export function ContentContextProvider({ children }: ContentContextProviderProps) {

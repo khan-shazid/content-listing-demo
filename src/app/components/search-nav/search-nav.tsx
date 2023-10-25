@@ -9,7 +9,7 @@ function SearchNav({ title, ...restProps }: SearchNavProps) {
     return (
         <div className={SearchNavStyles.header}>
             <div className={SearchNavStyles.back}>
-                <img src={require('app/assets/icons/back.png')} height="16" width="20" />
+                <img src={require('app/assets/icons/back.png')} />
                 <span className={SearchNavStyles['nav-title']}>{title}</span>
             </div>
             <div className="absolute right-0">

@@ -10,10 +10,14 @@ const Item = ({ content, scrollPosition }: { content: Content; scrollPosition: (
         <div>
             <LazyLoadImage
                 className="w-full"
+                wrapperClassName="w-full"
                 alt={content.name}
                 src={`${IMAGE_URL}/${content['poster-image']}`}
-                effect="black-and-white"
-                wrapperClassName="w-[200px] h-[300px]"
+                effect="blur"
+                onError={({ currentTarget }) => {
+                    currentTarget.onerror = null;
+                    currentTarget.src = require('../../assets/images/poster-placeholder.png');
+                }}
                 scrollPosition={scrollPosition}
                 placeholderSrc={require('../../assets/images/poster-placeholder.png')}
             />
