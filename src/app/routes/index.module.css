@@ -1,3 +1,3 @@
 .content-container {
-    @apply h-full min-h-[100vh] mx-auto p-5 pt-0 bg-[#171717] overflow-auto
+    @apply h-full mx-auto p-5 pt-0;
 }

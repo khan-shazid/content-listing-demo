@@ -17,10 +17,7 @@ function SearchNav({ title, ...restProps }: SearchNavProps) {
                     {/* <input type="submit" value="" className="search-submit" /> */}
                     <input
                         type="search"
-                        name="q"
                         className={SearchNavStyles.searchText}
-                        placeholder="Titles, people, genres..."
-                        autoComplete="off"
                         {...restProps}
                     />
                 </form>

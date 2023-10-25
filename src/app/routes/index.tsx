@@ -1,10 +1,11 @@
-import { useCallback } from 'react';
+import { Suspense, lazy, useCallback } from 'react';
 
 import { useContentContext } from '../contexts/content-context';
-import SearchNav from 'app/components/search-nav/search-nav';
-import ContentList from 'app/pages/contents';
+const SearchNav = lazy(() => import('app/components/search-nav/search-nav'));
+const ContentList = lazy(() => import('app/pages/contents'));
 
 import RouteStyles from './index.module.css';
+import { FallbackComponent } from 'app/components/fallback-component/fallback-component';
 
 /*
  * we can use router here and set the nav bar as part of layout
@@ -20,8 +21,11 @@ export default function Routes() {
     );
     return (
         <div className={RouteStyles['content-container']}>
-            <SearchNav title={pageTitle} value={search} onChange={handleSearchInput} />
-            <ContentList />
+            {/* <FallbackComponent /> */}
+            <Suspense fallback={<FallbackComponent />}>
+                <SearchNav title={pageTitle} value={search} onChange={handleSearchInput} />
+                <ContentList />
+            </Suspense>
         </div>
     );
 }
