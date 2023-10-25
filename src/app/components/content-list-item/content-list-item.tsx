@@ -1,14 +1,15 @@
 import { memo } from 'react';
 
 import { Content } from 'app/types/content-type';
-import { IMAGE_URL } from 'app/constants';
+import { IMAGE_URL, STATIC_IMAGES } from 'app/constants';
 import { LazyLoadImage, trackWindowScroll } from 'react-lazy-load-image-component';
 import 'react-lazy-load-image-component/src/effects/blur.css';
 
 const Item = ({ content, scrollPosition }: { content: Content; scrollPosition: () => void }) => {
     return (
-        <div>
+        <div data-testid="content-item">
             <LazyLoadImage
+                data-testid="content-item-image"
                 className="w-full"
                 wrapperClassName="w-full"
                 alt={content.name}
@@ -16,12 +17,14 @@ const Item = ({ content, scrollPosition }: { content: Content; scrollPosition: (
                 effect="blur"
                 onError={({ currentTarget }) => {
                     currentTarget.onerror = null;
-                    currentTarget.src = require('../../assets/images/poster-placeholder.png');
+                    currentTarget.src = STATIC_IMAGES.posterPlaceholder;
                 }}
                 scrollPosition={scrollPosition}
-                placeholderSrc={require('../../assets/images/poster-placeholder.png')}
+                placeholderSrc={STATIC_IMAGES.posterPlaceholder}
             />
-            <div className="text-white text-md py-1 font-default font-extralight">{content.name}</div>
+            <div className="text-white text-md py-1 font-default font-extralight" data-testid="content-item-title">
+                {content.name}
+            </div>
         </div>
     );
 };

@@ -10,7 +10,7 @@ export default function ContentList() {
     }, [loading]);
 
     return (
-        <div onScroll={handleScroll} className="grid grid-cols-3 gap-4 pt-16 h-full">
+        <div onScroll={handleScroll} className="grid grid-cols-3 gap-4 pt-16 h-full" data-testid="content-list">
             {contents.map((content) => (
                 <ContentListItem content={content} key={content.id} />
             ))}
