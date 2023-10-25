@@ -39,7 +39,7 @@ function useContentController() {
     const searchText = useDeferredValue<string>(search);
 
     const contents = useMemo(() => {
-        return data.filter((item) => item.name.includes(searchText));
+        return data.filter((item) => item.name.toLowerCase().includes(searchText.toLowerCase()));
     }, [data, searchText]);
 
     useEffect(() => {
