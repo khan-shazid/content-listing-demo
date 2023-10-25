@@ -1,38 +1,70 @@
 {
-  "name": "content-listing",
-  "version": "0.1.0",
-  "private": true,
-  "dependencies": {
-    "@testing-library/jest-dom": "^5.17.0",
-    "@testing-library/react": "^13.4.0",
-    "@testing-library/user-event": "^13.5.0",
-    "react": "^18.2.0",
-    "react-dom": "^18.2.0",
-    "react-scripts": "5.0.1",
-    "web-vitals": "^2.1.4"
-  },
-  "scripts": {
-    "start": "react-scripts start",
-    "build": "react-scripts build",
-    "test": "react-scripts test",
-    "eject": "react-scripts eject"
-  },
-  "eslintConfig": {
-    "extends": [
-      "react-app",
-      "react-app/jest"
-    ]
-  },
-  "browserslist": {
-    "production": [
-      ">0.2%",
-      "not dead",
-      "not op_mini all"
-    ],
-    "development": [
-      "last 1 chrome version",
-      "last 1 firefox version",
-      "last 1 safari version"
-    ]
-  }
+    "homepage": "https://khan-shazid.github.io/content-listing-demo",
+    "name": "content-listing-demo",
+    "version": "0.1.0",
+    "private": true,
+    "dependencies": {
+        "@testing-library/jest-dom": "^5.17.0",
+        "@testing-library/react": "^13.4.0",
+        "@testing-library/user-event": "^13.5.0",
+        "@types/jest": "^29.5.6",
+        "@types/node": "^20.8.8",
+        "@types/react": "^18.2.31",
+        "@types/react-dom": "^18.2.14",
+        "axios": "^1.5.1",
+        "env-cmd": "^10.1.0",
+        "react": "^18.2.0",
+        "react-dom": "^18.2.0",
+        "react-lazy-load-image-component": "^1.6.0",
+        "react-scripts": "5.0.1",
+        "serve": "^14.2.1",
+        "typescript": "^5.2.2",
+        "web-vitals": "^2.1.4"
+    },
+    "scripts": {
+        "lint": "eslint .",
+        "lint:fix": "eslint --fix",
+        "format": "prettier --write './**/*.{js,jsx,ts,tsx,css,md,json}' --config ./.prettierrc",
+        "tailwind:css": "tailwind build src/styles/tailwind.css -c tailwind.config.js -o src/styles/output.css",
+        "start": "env-cmd -f .env.development react-scripts start",
+        "build": "env-cmd -f .env.development react-scripts build",
+        "build:staging": "env-cmd -f .env.staging react-scripts build",
+        "build:production": "env-cmd -f .env.production react-scripts build",
+        "test": "react-scripts test --watchAll=false --verbose  --transformIgnorePatterns \"node_modules/(?!axios)/\"",
+        "test-watch": "react-scripts test --verbose  --transformIgnorePatterns \"node_modules/(?!axios)/\"",
+        "eject": "react-scripts eject",
+        "predeploy": "npm run build:production",
+        "deploy": "gh-pages -d build"
+    },
+    "eslintConfig": {
+        "extends": [
+            "react-app",
+            "react-app/jest"
+        ]
+    },
+    "browserslist": {
+        "production": [
+            ">0.2%",
+            "not dead",
+            "not op_mini all"
+        ],
+        "development": [
+            "last 1 chrome version",
+            "last 1 firefox version",
+            "last 1 safari version"
+        ]
+    },
+    "devDependencies": {
+        "@babel/plugin-proposal-private-property-in-object": "^7.21.11",
+        "@typescript-eslint/eslint-plugin": "^6.9.0",
+        "@typescript-eslint/parser": "^6.9.0",
+        "axios-mock-adapter": "^1.22.0",
+        "eslint": "^8.52.0",
+        "eslint-config-prettier": "^9.0.0",
+        "eslint-plugin-prettier": "^5.0.1",
+        "eslint-plugin-react": "^7.33.2",
+        "gh-pages": "^6.0.0",
+        "prettier": "^3.0.3",
+        "tailwindcss": "^3.3.3"
+    }
 }

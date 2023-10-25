@@ -1,0 +1,16 @@
+{
+    "compilerOptions": {
+        "target": "es5",
+        "jsx": "react-jsx",
+        "skipLibCheck": true,
+        "strict": false,
+        "noEmit": true,
+        "forceConsistentCasingInFileNames": true,
+        "baseUrl": "src/",
+    },
+    "include": [
+        "src/**/*",
+        "./declaration.d.ts"
+      ],
+      "exclude": ["node_modules", "build"]
+}
