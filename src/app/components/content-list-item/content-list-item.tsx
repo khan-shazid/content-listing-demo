@@ -22,7 +22,10 @@ const Item = ({ content, scrollPosition }: { content: Content; scrollPosition: (
                 scrollPosition={scrollPosition}
                 placeholderSrc={STATIC_IMAGES.posterPlaceholder}
             />
-            <div className="text-white text-md py-1 font-default font-extralight" data-testid="content-item-title">
+            <div
+                className="text-white text-md py-1 font-default font-extralight whitespace-nowrap overflow-hidden text-ellipsis"
+                data-testid="content-item-title"
+            >
                 {content.name}
             </div>
         </div>
